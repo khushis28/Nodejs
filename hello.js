@@ -1,2 +1,10 @@
-const math = require("./math")
-console.log("Math value is", math);
+//normal programming
+// function add(a,b){
+//     return a+b;
+// }
+// console.log(add(2,5));
+
+
+
+//modular programming
+console.log(add(2,5));
