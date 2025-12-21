@@ -13,4 +13,6 @@ fs.readFile("contact.txt","utf-8", (err,result) => {
                            // it gets printed, it doesn't blocks
 })
 console.log("2");
+console.log("3");
+
 
