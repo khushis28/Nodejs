@@ -25,17 +25,59 @@
 
 
 //using {req.url} we can give multiple responses
+// const http = require("http");
+// const fs = require("fs");
+// const myServer = http.createServer((req, res) => {
+//to stop logging favicon icon
+// if (req.url === "/favicon.ico")return res.end(); 
+//     const log = `${Date.now()}: New Request Received\n`;
+//     fs.appendFile("log.txt", log, (err, data)=> {
+//         switch(req.url){
+//             case '/': res.end("Home Page");
+//             break;
+//             case '/about': res.end("I am khushi singh");
+//             break; 
+//             default: res.end("404 Not Found");
+//         }
+//     });   
+// });
+// myServer.listen(8000, ()=>{
+//     console.log("Server Started");
+// });
+
+
+
 const http = require("http");
 const fs = require("fs");
+//to parse the url, http can't do so
+const url = require("url");
 const myServer = http.createServer((req, res) => {
-    const log = `${Date.now()}: New Request Received\n`;
+      if (req.url === '/favicon.ico')return res.end();
+      const log = `${Date.now()}: ${req.url} New Request Received\n`;
+      //parsing req.url using url module
+      //url.parse acts like a filter that separates the address into different parts
+      //(req.url, true) -> parses query parameter strings
+    const myUrl= url.parse(req.url,true);
+    console.log(myUrl);
+    
     fs.appendFile("log.txt", log, (err, data)=> {
-        switch(req.url){
-            case '/': res.end("Home Page");
-            break;
-            case '/about': res.end("I am khushi singh");
+        //by using switch(myUrl.pathname) you are telling server to only look for pathname instead of extra information
+        switch(myUrl.pathname){
+            case '/': 
+            res.end("Home Page");
             break; 
-            default: res.end("404 Not Found");
+            case '/about': 
+            //extracts the myname parameter from the URL query string
+            //value is stored in username
+            const username = myUrl.query.myname;
+            //sends a response to the client saying “Hi, <name>”
+            res.end(`Hi, ${username}`);
+            break; 
+            case '/search':
+                const search = myUrl.query.search_query;
+                res.end("Here are your results for " + search);
+            default: 
+            res.end("404 Not Found");
         }
     });   
 });
