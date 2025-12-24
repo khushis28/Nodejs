@@ -47,40 +47,89 @@
 
 
 
+// const http = require("http");
+// const fs = require("fs");
+// //to parse the url, http can't do so
+// const url = require("url");
+// const myServer = http.createServer((req, res) => {
+//       if (req.url === '/favicon.ico')return res.end();
+//       const log = `${Date.now()}: ${req.url} New Request Received\n`;
+
+//       //parsing req.url using url module
+//       //url.parse acts like a filter that separates the address into different parts
+//       //(req.url, true) -> parses query parameter strings
+//     const myUrl= url.parse(req.url,true);
+//     console.log(myUrl);
+    
+//     fs.appendFile("log.txt", log, (err, data)=> {
+//         //by using switch(myUrl.pathname) you are telling server to only look for pathname instead of extra information
+//         switch(myUrl.pathname){
+//             case '/': 
+//             res.end("Home Page");
+//             break; 
+//             case '/about': 
+//             //extracts the myname parameter from the URL query string
+//             //value is stored in username
+//             const username = myUrl.query.myname;
+//             //sends a response to the client saying “Hi, <name>”
+//             res.end(`Hi, ${username}`);
+//             break; 
+//             case '/search':
+//                 const search = myUrl.query.search_query;
+//                 res.end("Here are your results for " + search);
+//             default: 
+//             res.end("404 Not Found");
+//         }
+//     });   
+// });
+// myServer.listen(8000, ()=>{
+//     console.log("Server Started");
+// });
+
+
+
+//HTTP methods
 const http = require("http");
 const fs = require("fs");
-//to parse the url, http can't do so
 const url = require("url");
 const myServer = http.createServer((req, res) => {
       if (req.url === '/favicon.ico')return res.end();
-      const log = `${Date.now()}: ${req.url} New Request Received\n`;
-      //parsing req.url using url module
-      //url.parse acts like a filter that separates the address into different parts
-      //(req.url, true) -> parses query parameter strings
+      //creates a log string with timestamp, request method and URL
+      const log = `${Date.now()}: ${req.method} ${req.url} New Request Received\n`;
     const myUrl= url.parse(req.url,true);
-    console.log(myUrl);
-    
     fs.appendFile("log.txt", log, (err, data)=> {
-        //by using switch(myUrl.pathname) you are telling server to only look for pathname instead of extra information
         switch(myUrl.pathname){
+            //if URL path is "/"
             case '/': 
+            //allow only GET requests
+            if(req.method=== 'GET')
             res.end("Home Page");
             break; 
             case '/about': 
-            //extracts the myname parameter from the URL query string
-            //value is stored in username
             const username = myUrl.query.myname;
-            //sends a response to the client saying “Hi, <name>”
             res.end(`Hi, ${username}`);
             break; 
             case '/search':
                 const search = myUrl.query.search_query;
                 res.end("Here are your results for " + search);
+                //if URL path is "/signup"
+                case '/signup':
+                    //if request method is GET
+                    if(req.method === 'GET')
+                   res.end("This is a signup form");  
+                //if request method is POST 
+                else if (req.method === 'POST'){
+                    //here data gets saved normally to the database
+                    res.end("Success");
+                }
+                break;
+            //if no routes matches
             default: 
             res.end("404 Not Found");
         }
     });   
 });
+//start the server on port 8000
 myServer.listen(8000, ()=>{
     console.log("Server Started");
 });
