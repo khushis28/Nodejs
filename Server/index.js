@@ -137,7 +137,7 @@
 
 
 //Express.js framework
-const http = require("http");
+// const http = require("http");
 //importing express framework
 //helps in handling routes & requests easily
 const express = require("express");
@@ -155,15 +155,25 @@ app.get("/", (req, res) => {
 
 
 //defines a GET route for the homepage "/about" page
+//This code defines a GET route for the '/about' page using Express. When a user visits the '/about' URL, the callback function is executed, where req represents the incoming request and res is used to send a response back to the client. The server responds with a text message that combines static text and query parameters (name and age) taken from the URL using req.query. For example, if the user visits '/about?name=Khushi&age=21', the response will dynamically display the user’s name and age in the message
+// app.get("/about", (req,res) => {
+//     return res.send("hello from about page " + "hey " + req.query.name + " you are " + req.query.age);
+// })
+//This code defines a GET route for the '/about' endpoint in an Express application. When a user visits the '/about' URL, the route handler runs and sends a response using res.send(). It uses a template literal to dynamically include the name value from the URL’s query parameters '(req.query.name)' in the response. For example, accessing '/about?name=Khushi' will display the message “Hello Khushi” in the browser
 app.get("/about", (req,res) => {
-    return res.send("hello from about page");
+     return res.send(`Hello ${req.query.name}`);
 })
 
 //creates an HTTP server
 //we pass express app as a request handler
 //express internally handles req and res
-const myServer = http.createServer(app);
+// you are manually creating an HTTP server using Node’s built-in http module and then passing the Express app as a request handler. This means you are explicitly handling server creation and listening.
+// const myServer = http.createServer(app);
+// myServer.listen(8000, ()=> console.log("server started!"));
+
+//express js framework handles manually creating an HTTP server using nodejs built-in http module, express does this internally for us
+//app.listen() method automatically creates an HTTP server using http.createServer() behind the scenes & attaches your Express app to it. This removes boilerplate code, makes the code cleaner and more readable, and lets you focus on routing, middleware, and application logic instead of low-level server setup
+app.listen(8000, () => console.log("Server started!"));
 
 
-myServer.listen(8000, ()=> console.log("server started!"));
 
