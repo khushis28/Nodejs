@@ -89,47 +89,81 @@
 
 
 //HTTP methods
+// const http = require("http");
+// const fs = require("fs");
+// const url = require("url");
+// const myServer = http.createServer((req, res) => {
+//       if (req.url === '/favicon.ico')return res.end();
+//       //creates a log string with timestamp, request method and URL
+//       const log = `${Date.now()}: ${req.method} ${req.url} New Request Received\n`;
+//     const myUrl= url.parse(req.url,true);
+//     fs.appendFile("log.txt", log, (err, data)=> {
+//         switch(myUrl.pathname){
+//             //if URL path is "/"
+//             case '/': 
+//             //allow only GET requests
+//             if(req.method=== 'GET')
+//             res.end("Home Page");
+//             break; 
+//             case '/about': 
+//             const username = myUrl.query.myname;
+//             res.end(`Hi, ${username}`);
+//             break; 
+//             case '/search':
+//                 const search = myUrl.query.search_query;
+//                 res.end("Here are your results for " + search);
+//                 //if URL path is "/signup"
+//                 case '/signup':
+//                     //if request method is GET
+//                     if(req.method === 'GET')
+//                    res.end("This is a signup form");  
+//                 //if request method is POST 
+//                 else if (req.method === 'POST'){
+//                     //here data gets saved normally to the database
+//                     res.end("Success");
+//                 }
+//                 break;
+//             //if no routes matches
+//             default: 
+//             res.end("404 Not Found");
+//         }
+//     });   
+// });
+// //start the server on port 8000
+// myServer.listen(8000, ()=>{
+//     console.log("Server Started");
+// });
+
+
+
+//Express.js framework
 const http = require("http");
-const fs = require("fs");
-const url = require("url");
-const myServer = http.createServer((req, res) => {
-      if (req.url === '/favicon.ico')return res.end();
-      //creates a log string with timestamp, request method and URL
-      const log = `${Date.now()}: ${req.method} ${req.url} New Request Received\n`;
-    const myUrl= url.parse(req.url,true);
-    fs.appendFile("log.txt", log, (err, data)=> {
-        switch(myUrl.pathname){
-            //if URL path is "/"
-            case '/': 
-            //allow only GET requests
-            if(req.method=== 'GET')
-            res.end("Home Page");
-            break; 
-            case '/about': 
-            const username = myUrl.query.myname;
-            res.end(`Hi, ${username}`);
-            break; 
-            case '/search':
-                const search = myUrl.query.search_query;
-                res.end("Here are your results for " + search);
-                //if URL path is "/signup"
-                case '/signup':
-                    //if request method is GET
-                    if(req.method === 'GET')
-                   res.end("This is a signup form");  
-                //if request method is POST 
-                else if (req.method === 'POST'){
-                    //here data gets saved normally to the database
-                    res.end("Success");
-                }
-                break;
-            //if no routes matches
-            default: 
-            res.end("404 Not Found");
-        }
-    });   
-});
-//start the server on port 8000
-myServer.listen(8000, ()=>{
-    console.log("Server Started");
-});
+//importing express framework
+//helps in handling routes & requests easily
+const express = require("express");
+
+//creating an express application which acts as a handler function
+//'app' will be used to define routes & middlewares
+const app = express();
+
+
+//defines a GET route for the homepage "/"
+app.get("/", (req, res) => {
+    //sends a response when user visits localhost:8000
+    return res.send("Hello from Home page");
+})
+
+
+//defines a GET route for the homepage "/about" page
+app.get("/about", (req,res) => {
+    return res.send("hello from about page");
+})
+
+//creates an HTTP server
+//we pass express app as a request handler
+//express internally handles req and res
+const myServer = http.createServer(app);
+
+
+myServer.listen(8000, ()=> console.log("server started!"));
+
