@@ -1,0 +1,27 @@
+::::::Designing -> REST API::::::
+
+* Inside this REST API: JSON data will be imported
+
+* We will deal with users: 
+"/users returns the users data as a JSON"
+-> GET /users (this route will list all users) - DONE!!
+
+**TO MAKE IT SUPPORTED ON BROWSER & MOBILE APPS**
+Mobile devs can run it while accessing api!
+-> GET /api/users (this route will list all users) - DONE!!
+
+We will render HTML Document for GET /users - DONE!!
+
+
+*These are dynamic route or Path*
+-> GET /api/users/1(Get the user with ID 1) OR  GET /api/users/2(Get the user with ID 1)  - DONE!!
+
+"Dynamic path parameters"
+":id" is a variable, dynamic
+GET /api/users/:id   - DONE!!
+
+-> POST /api/users(Create new user)
+
+-> PATCH /api/user/1(Edit the user with ID 1 or 2)
+
+->DELETE /api/users/1(delete the user with ID 1)
