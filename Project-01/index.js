@@ -1,5 +1,5 @@
 const express = require("express");
-
+const fs = require("fs");
 
 //importing users data
 const users = require('./MOCK_DATA.json');
@@ -40,20 +40,39 @@ app.get('/api/users', (req,res)=>{
 
 app.post('/api/users', (req,res)=> {
     const body = req.body;
-    console.log('Body', body);
-    
-    return res.json({status : "pending"});
+    users.push({...body, id: users.length+1});
+    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
+        return res.json({status : "success", id: users.length});
+    });
+});
+
+app.patch('/api/users/:id', (req,res)=> {
+    const id = Number(req.params.id);
+    const body = req.body;
+    const user = users.find(user=> user.id === id);
+    if(!user){
+        return res.json({status : "user not found"});
+    }
+
+    //update fields
+    Object.assign(user,body);
+    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err) => {
+        return res.json({status : "success", updatedUser:user});
+    });
+});
+
+
+app.delete('/api/users/:id', (req,res)=> {
+   const id = Number(req.params.id);
+   const index = users.findIndex(user => user.id=== id);
+   if(index === -1){
+    return res.json({status : "User not found"});
+   }
+   users.splice(index,1);
+   fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err) => {
+        return res.json({status : "success", deletedId:id});
+    })
 })
-
-// app.patch('/api/users/:id', (req,res)=> {
-//     //To-do: edit the user with ID
-//     return res.json({status : "pending"});
-// })
-
-// app.delete('/api/users/:id', (req,res)=> {
-//     //To-do: delete the user with ID
-//     res.json({status : "pending"});
-// })
 
 
 //merging all routes
@@ -66,14 +85,15 @@ app
       const user = users.find((user) => user.id === id);
       return res.json(user);
 })
-    .patch((req,res)=> {
-        //edit user with ID
-        return res.json({status: "Pending"});
-    })
-    .delete((req,res)=> {
-        //delete user with ID
-        return res.json({status: "Pending"});
-    });
+    // .patch((req,res)=> {
+    //     //edit user with ID
+    //     return res.json({status: "Pending"});
+    // })
+
+    // .delete((req,res)=> {
+    //     //delete user with ID
+    //     return res.json({status: "Pending"});
+    // });
 
 
 app.listen(PORT, () => console.log(`Server Started at PORT: ${PORT}`));
