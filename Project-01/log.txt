@@ -1,0 +1,6 @@
+1767301062827: GET: /api/users
+10041767301115929: GET: /api/users/
+1767301253068: POST: /api/users
+
+//::1 -> IP of localhost:8000
+1767301324566:::1 POST: /api/users

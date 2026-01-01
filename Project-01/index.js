@@ -9,6 +9,23 @@ const PORT = 8000;
 //middleware  - assume this as plugin
 app.use(express.urlencoded({extended:false}));
 
+
+//creating custom middlewares
+app.use((req,res,next)=>{
+    // console.log('Hello from middleware 1');
+    // req.myUserName = "khushisingh28";
+    fs.appendFile('log.txt', `\n${Date.now()}:${req.ip} ${req.method}: ${req.path}\n`, (err,data) =>{
+        next();
+    });
+})
+
+// app.use((req,res,next)=>{
+//     // console.log('Hello from middleware 2', req.myUserName);
+//      console.log('Hello from middleware 2');
+//     next();
+// })
+
+
 //Routes
 //renderig html doc
 app.get('/users', (req,res)=>{
@@ -26,6 +43,7 @@ app.get('/users', (req,res)=>{
 
 //rest api points
 app.get('/api/users', (req,res)=>{
+    // console.log('I am in GET route', req.myUserName);
     return res.json(users);
 })
 
