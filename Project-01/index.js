@@ -6,6 +6,8 @@ const users = require('./MOCK_DATA.json');
 const app = express();
 const PORT = 8000;
 
+//middleware  - assume this as plugin
+app.use(express.urlencoded({extended:false}));
 
 //Routes
 //renderig html doc
@@ -36,10 +38,12 @@ app.get('/api/users', (req,res)=>{
 //     return res.json(user);
 // })
 
-// app.post('/api/users', (req,res)=> {
-//     //To-do: Create new user
-//     return res.json({status : "pending"});
-// })
+app.post('/api/users', (req,res)=> {
+    const body = req.body;
+    console.log('Body', body);
+    
+    return res.json({status : "pending"});
+})
 
 // app.patch('/api/users/:id', (req,res)=> {
 //     //To-do: edit the user with ID
