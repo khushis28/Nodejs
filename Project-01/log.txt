@@ -4,3 +4,29 @@
 
 //::1 -> IP of localhost:8000
 1767301324566:::1 POST: /api/users
+
+1767395023752:::1 GET: /
+
+1767395024399:::1 GET: /
+
+1767395042298:::1 GET: /
+
+1767395121721:::1 GET: /api/users
+
+1767395135692:::1 POST: /api/users
+
+1767395477004:::1 POST: /api/users
+
+1767395497376:::1 POST: /api/users
+
+1767395590303:::1 GET: /api/userss
+
+1767395623260:::1 GET: /api/users/2000
+
+1767395754248:::1 GET: /api/users/2000
+
+1767395766721:::1 GET: /api/users/1
+
+1767395842974:::1 GET: /api/users/1
+
+1767395864437:::1 GET: /api/users/1
