@@ -42,10 +42,10 @@ app.get('/users', (req,res)=>{
 
 
 //rest api points
-app.get('/api/users', (req,res)=>{
-    // console.log('I am in GET route', req.myUserName);
-    return res.json(users);
-})
+// app.get('/api/users', (req,res)=>{
+//     // console.log('I am in GET route', req.myUserName);
+//     return res.json(users);
+// })
 
 
 //simple routing
@@ -116,6 +116,15 @@ app
     //     //delete user with ID
     //     return res.json({status: "Pending"});
     // });
+
+
+//REST API -> sends to all users as a json
+app.get("/api/users", (req,res)=>{
+    //custom header -> always add X to custom headers
+    res.setHeader('X-myName','Khushi Singh');
+    // console.log(req.headers);
+    return res.json(users);
+})
 
 
 app.listen(PORT, () => console.log(`Server Started at PORT: ${PORT}`));
