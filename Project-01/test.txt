@@ -1,0 +1,4 @@
+In mongoose you have a,
+Schema -> define the structure
+using this schema we make Model,
+using this model we do CRUD operations

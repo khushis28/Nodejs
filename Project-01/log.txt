@@ -1,0 +1,140 @@
+1767301062827: GET: /api/users
+10041767301115929: GET: /api/users/
+1767301253068: POST: /api/users
+
+//::1 -> IP of localhost:8000
+1767301324566:::1 POST: /api/users
+
+1767395023752:::1 GET: /
+
+1767395024399:::1 GET: /
+
+1767395042298:::1 GET: /
+
+1767395121721:::1 GET: /api/users
+
+1767395135692:::1 POST: /api/users
+
+1767395477004:::1 POST: /api/users
+
+1767395497376:::1 POST: /api/users
+
+1767395590303:::1 GET: /api/userss
+
+1767395623260:::1 GET: /api/users/2000
+
+1767395754248:::1 GET: /api/users/2000
+
+1767395766721:::1 GET: /api/users/1
+
+1767395842974:::1 GET: /api/users/1
+
+1767395864437:::1 GET: /api/users/1
+
+1767442709626:::1 GET: /api/users
+
+1767442869975:::1 GET: /api/users
+
+1767442907901:::1 GET: /api/users
+
+1767443206047:::1 GET: /api/users
+
+1767443245614:::1 GET: /api/users
+
+1767443277964:::1 GET: /api/users
+
+1767443304565:::1 GET: /api/users
+
+1767443331964:::1 GET: /api/users
+
+1767443348415:::1 GET: /api/users
+
+1767443463933:::1 GET: /api/users
+
+1767443519281:::1 GET: /api/users
+
+1767443535448:::1 GET: /api/users
+
+1767443671045:::1 GET: /api/users
+
+1767443719872:::1 GET: /api/users
+
+1767443757280:::1 GET: /api/users
+
+1767443800423:::1 GET: /api/users
+
+1767443933097:::1 GET: /api/users
+
+1767552277436:::1 POST: /api/users
+
+1767552437045:::1 POST: /api/users
+
+1767552713958:::1 POST: /api/users
+
+1767552730467:::1 POST: /api/users
+
+1767552789065:::1 POST: /api/users
+
+1767553084166:::1 GET: /
+
+1767553084783:::1 GET: /
+
+1767553095924:::1 GET: /users
+
+1767553096094:::1 GET: /favicon.ico
+
+1767553233213:::1 GET: /api/users
+
+1767553392419:::1 GET: /api/users/695ab5b5d672a4e6e1cc7f24
+
+1767553461289:::1 GET: /api/users/695ab5b5d672a4e6e1cc7f24
+
+1767790135033:::1 GET: /api/users/695ab5b5d672a4e6e1cc7f24
+
+1767790145730:::1 GET: /api/users/
+
+1767790166288:::1 PATCH: /api/users/695ab515a9f35cffd35b7926
+
+1767790322833:::1 PATCH: /api/users/695ab515a9f35cffd35b7926
+
+1767790445926:::1 PATCH: /api/users/695ab515a9f35cffd35b7926
+
+1767790700545:::1 PATCH: /api/users/695ab515a9f35cffd35b7926
+
+1767790819381:::1 GET: /api/users/695ab515a9f35cffd35b7926
+
+1767790839183:::1 GET: /api/users/695ab515a9f35cffd35b7926
+
+1767790859077:::1 GET: /
+
+1767790859422:::1 GET: /
+
+1767790870040:::1 GET: /api/users/1
+
+1767790929405:::1 GET: /api/users
+
+1767790929452:::1 GET: /favicon.ico
+
+1767790949504:::1 DELETE: /api/users/695ab515a9f35cffd35b7926
+
+1767790955910:::1 GET: /api/users
+
+1767790962964:::1 GET: /api/users
+
+1767790967330:::1 GET: /
+
+1767790967534:::1 GET: /
+
+1767790992084:::1 GET: /users
+
+1767814962999:::1 GET: /api/users/
+
+1767814988915:::1 GET: /api/users/
+
+1767815097021:::1 POST: /api/users/
+
+1767815121872:::1 POST: /api/users/
+
+1767815161117:::1 GET: /api/users/695eb7d14c243334e7ef0146
+
+1767815177572:::1 DELETE: /api/users/695eb7d14c243334e7ef0146

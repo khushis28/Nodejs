@@ -1,0 +1,24 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/khushis28/Nodejs#readme",
+  "bugs": {
+    "url": "https://github.com/khushis28/Nodejs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khushis28/Nodejs.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "discord.js": "^14.25.1",
+    "dotenv": "^17.3.1"
+  }
+}
